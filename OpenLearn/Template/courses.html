@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container text-center my-5">
+    <h1 class="display-4">Our Courses</h1>
+    <p class="lead">Explore our wide range of online courses designed to help you grow and succeed.</p>
+</div>
+
+<div class="container my-5">
+    <div class="row">
+        {% for course in Course %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">{{ course.title }}</h5>
+                    <p class="card-text">{{ course.Link|truncatewords:20 }}</p>
+                    <a href="{{ course.Link }}" class="btn btn-primary">Open</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center">No courses available at the moment.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

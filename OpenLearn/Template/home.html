@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container text-center my-5">
+    <h1 class="display-4">Welcome to Our OpenLearn Platform</h1>
+    <p class="lead">Learn from the best courses anytime, anywhere.</p>
+    <a href="/courses/" class="btn btn-primary btn-lg">Browse Courses</a>
+</div>
+
+<div class="container my-5">
+    <h2 class="text-center">Featured Courses</h2>
+    <div class="row">
+        {% for course in course %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">{{ course.title }}</h5>
+                    <p class="card-text">{{ course.Link|truncatewords:10 }}</p>
+                    <a href="{{ course.Link }}/" class="btn btn-primary">View Course</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center">No courses available at the moment.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
